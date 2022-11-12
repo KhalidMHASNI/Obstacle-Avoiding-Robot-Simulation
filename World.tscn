@@ -1,0 +1,80 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Player/pixil-frame-0 (1).png" type="Texture" id=1]
+[ext_resource path="res://Player/RobotMovement.gd" type="Script" id=3]
+[ext_resource path="res://World/GrassBackground.png" type="Texture" id=4]
+
+[node name="World" type="Node2D"]
+
+[node name="GrassBackground2" type="Sprite" parent="."]
+position = Vector2( 130, 33.5 )
+scale = Vector2( 2, 1.07813 )
+texture = ExtResource( 4 )
+
+[node name="GrassBackground3" type="Sprite" parent="."]
+position = Vector2( 64, 96 )
+scale = Vector2( 2, 1 )
+texture = ExtResource( 4 )
+
+[node name="GrassBackground5" type="Sprite" parent="."]
+position = Vector2( 252, 32 )
+scale = Vector2( 2, 1.03125 )
+texture = ExtResource( 4 )
+
+[node name="GrassBackground6" type="Sprite" parent="."]
+position = Vector2( 379, 32 )
+scale = Vector2( 2, 1.03125 )
+texture = ExtResource( 4 )
+
+[node name="GrassBackground7" type="Sprite" parent="."]
+position = Vector2( 319, 96 )
+scale = Vector2( 2, 1 )
+texture = ExtResource( 4 )
+
+[node name="GrassBackground8" type="Sprite" parent="."]
+position = Vector2( 321, 158 )
+scale = Vector2( 2, 1 )
+texture = ExtResource( 4 )
+
+[node name="GrassBackground9" type="Sprite" parent="."]
+position = Vector2( 195, 161 )
+scale = Vector2( 2, 1 )
+texture = ExtResource( 4 )
+
+[node name="GrassBackground10" type="Sprite" parent="."]
+position = Vector2( 56, 160 )
+scale = Vector2( 2, 1 )
+texture = ExtResource( 4 )
+
+[node name="GrassBackground12" type="Sprite" parent="."]
+position = Vector2( 56, 160 )
+scale = Vector2( 2, 1 )
+texture = ExtResource( 4 )
+
+[node name="GrassBackground11" type="Sprite" parent="."]
+position = Vector2( 31, 32 )
+scale = Vector2( 2, 1.03125 )
+texture = ExtResource( 4 )
+
+[node name="GrassBackground13" type="Sprite" parent="."]
+position = Vector2( 126, 159 )
+scale = Vector2( 2, 1.03125 )
+texture = ExtResource( 4 )
+
+[node name="GrassBackground4" type="Sprite" parent="."]
+position = Vector2( 192, 97 )
+scale = Vector2( 2, 1 )
+texture = ExtResource( 4 )
+
+[node name="Robot" type="KinematicBody2D" parent="."]
+position = Vector2( 86, 35 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Robot"]
+rotation = 1.5708
+texture = ExtResource( 1 )
+hframes = 3
+frame = 1
