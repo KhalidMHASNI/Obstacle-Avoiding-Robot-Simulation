@@ -30,23 +30,20 @@ func _physics_process(delta):
 		#delta_t += 100 * delta/120
 		#print(delta_t)
 		rotation_dir -=1
+		
 		velocity = Vector2(Dd, 0).rotated(rotation)
 		
 	if Input.is_action_pressed("ui_up"):
 		velocity = Vector2(Dr, 0)
+		Dd=Dd+1
+		print(Dd)
 		
 	if Input.is_action_pressed("ui_left"):
 		rotation_dir += 1
 		velocity = Vector2(-Dd, 0).rotated(rotation)
 		
-	if Input.is_action_pressed("back_right"):
-		rotation_dir += 1
-		velocity = Vector2(Dg, 0).rotated(rotation)
-	if Input.is_action_pressed("back_left"):
-		rotation_dir -=1
-		velocity = Vector2(-Dg, 0).rotated(rotation)
-	#else : 
-		#delta_t = 0
+	if Input.is_action_pressed("ui_down"):
+		velocity = Vector2(-Dr, 0)
 	
 	rotation += rotation_dir * rotation_speed *delta_t
 	velocity += velocity * Wacc
