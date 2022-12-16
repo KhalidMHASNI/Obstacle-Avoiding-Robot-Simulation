@@ -28,6 +28,22 @@ texture = ExtResource( 1 )
 hframes = 4
 frame = 1
 
+[node name="wL" type="Label" parent="YSort"]
+margin_left = 196.0
+margin_top = 54.0
+margin_right = 236.0
+margin_bottom = 68.0
+text = "wg"
+script = ExtResource( 5 )
+
+[node name="wR" type="Label" parent="YSort"]
+margin_left = 60.0
+margin_top = 56.0
+margin_right = 100.0
+margin_bottom = 70.0
+text = "wd"
+script = ExtResource( 2 )
+
 [node name="Label" type="Label" parent="."]
 margin_left = 28.0
 margin_top = 19.0
@@ -43,19 +59,3 @@ margin_right = 283.0
 margin_bottom = 51.0
 text = "Vitesse angulaire 
 de la roue gauche :"
-
-[node name="wR" type="Label" parent="."]
-margin_left = 60.0
-margin_top = 56.0
-margin_right = 100.0
-margin_bottom = 70.0
-text = "wd"
-script = ExtResource( 2 )
-
-[node name="wL" type="Label" parent="."]
-margin_left = 196.0
-margin_top = 54.0
-margin_right = 236.0
-margin_bottom = 68.0
-text = "wg"
-script = ExtResource( 5 )
