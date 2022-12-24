@@ -1,9 +1,9 @@
-extends Label
+extends Sprite
 
 
 # Declare member variables here. Examples:
 # var a = 2
-var wL = 0
+# var b = "text"
 
 
 # Called when the node enters the scene tree for the first time.
@@ -12,11 +12,5 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	if Input.is_action_just_pressed("ui_up"):
-		wL+=1;
-		text = str(wL);
-	if Input.is_action_just_pressed("ui_down"):
-		wL-=1;
-		text = str(wL);
-
+#func _process(delta):
+#	pass

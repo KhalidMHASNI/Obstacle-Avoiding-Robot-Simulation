@@ -1,87 +1,70 @@
 extends KinematicBody2D
 
-export (int) var speed = 20
-export (float) var rotation_speed = 1.5
-
-var velocity = Vector2.ZERO
+export (int) var speed = 200
+export (float) var rotation_speed = 1
+var velocity = Vector2()
 var rotation_dir = 0
-var right_ws = 0
-var left_ws = 0
-var maxW = 20
-var Vr = 0
+#############################################
+var delta_t = 0.1
+var dis_entre_Roue = 5 #cm
+var ray_Robot = 5 #cm
+var ray_Roue = 2 #cm
+
+var delta_w_Max = 20 #rad/s
+var w_Max = 50 #rad/s
+var w_D = 0
+var w_G = 0
+
+var dist_Droite = 0
+var dist_Gauche = 0
+var dist_Robot = 0
+var rot_Robot = 0
+
 
 func get_input():
 	rotation_dir = 0
 	velocity = Vector2()
-	if Input.is_action_pressed("ui_right"):
-		rotation_dir += 1
-	if Input.is_action_pressed("ui_left"):
-		rotation_dir -= 1
-	if Input.is_action_pressed("ui_down"):
-		velocity = Vector2(-speed, 0).rotated(rotation)
-	if Input.is_action_pressed("ui_up"):
-		velocity = Vector2(speed, 0).rotated(rotation)
-
-func moveRightWheel():
-	pass
-
-func keepGoing():
-	velocity = Vector2()
 	if Input.is_action_just_pressed("ui_right"):
-		right_ws += 1
-		velocity = Vector2(speed * right_ws, 0)
-
-		print("right wheel : ",right_ws)
+		#rotation_dir += 1
+		w_G +=(delta_w_Max)
+		w_D -=(delta_w_Max)
 	if Input.is_action_just_pressed("ui_left"):
-		right_ws -= 1
-		velocity = Vector2(speed * right_ws, 0)
-
-		print("right wheel : ",right_ws)
-	if Input.is_action_just_pressed("ui_up"):
-		left_ws += 1
-
-		print("left wheel : ",left_ws)
+		#rotation_dir -= 1
+		w_D +=(delta_w_Max)
+		w_G -=(delta_w_Max)
 	if Input.is_action_just_pressed("ui_down"):
-		left_ws -= 1
-
-		print("left wheel : ",left_ws)
+		w_D -=(delta_w_Max)
+		w_G -=(delta_w_Max)
+	if Input.is_action_just_pressed("ui_up"):
+		w_D +=(delta_w_Max)
+		w_G +=(delta_w_Max)
 	if Input.is_action_just_pressed("ui_reset"):
-		right_ws = 0
-		left_ws = 0
-
-
+		w_D =0
+		w_G =0
+	
 func _physics_process(delta):
-	#get_input()
-	velocity = Vector2()
-	if Input.is_action_just_pressed("ui_right"):
-		right_ws += 1
-		Vr = speed * right_ws
-
-		print("right wheel : ",right_ws)
-	if Input.is_action_just_pressed("ui_left"):
-		right_ws -= 1
-		Vr = speed * right_ws
-		print("right wheel : ",right_ws)
-	if Input.is_action_just_pressed("ui_up"):
-		left_ws += 1
-
-		print("left wheel : ",left_ws)
-	if Input.is_action_just_pressed("ui_down"):
-		left_ws -= 1
-
-		print("left wheel : ",left_ws)
-	if Input.is_action_just_pressed("ui_reset"):
-		right_ws = 0
-		left_ws = 0
-		Vr = 0
-
-	print(Vr)
-	rotation += rotation_dir * rotation_speed * delta
-	if (Vr!=0):
-		move_and_collide(Vector2(Vr,0) * delta)	
-	if (Vr==0):
+	get_input()
+	dist_Droite = w_D * delta_t * ray_Roue
+	dist_Gauche = w_G * delta_t * ray_Roue
+	
+	dist_Robot = (dist_Droite + dist_Gauche)/2
+	rot_Robot = (dist_Gauche - dist_Droite)/(dis_entre_Roue*10)
+	
+	#print("La vitesse de la roue droite est : ",w_D)
+	#print("La vitesse de la roue gauche est : ",w_G)
+	
+	rotation += rot_Robot * rotation_speed * delta_t
+	
+	if (dist_Robot!=0):
+		#print(dist_Robot)
+		$wL.text = str(w_G)
+		$wD.text = str(w_D)
+		velocity = (Vector2(dist_Robot,0)).rotated(rotation).clamped(delta_w_Max)
+		print(velocity)
+		move_and_collide(velocity*delta)
+	if (dist_Robot==0):
 		move_and_collide(Vector2.ZERO * delta)
-	else :
-		move_and_collide(Vector2(Vr,0) * delta)	
-	
-	
+		
+
+func clamp(value, min_value, max_value):
+	return max(min(value, max_value), min_value)
