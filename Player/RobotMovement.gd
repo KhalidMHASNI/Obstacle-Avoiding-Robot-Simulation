@@ -58,12 +58,13 @@ func _physics_process(delta):
 	rotation += rot_Robot * rotation_speed * delta_t
 	
 	if (dist_Robot!=0):
-		#print(dist_Robot)
-		
-		
 		velocity = (Vector2(dist_Robot,0)).rotated(rotation).clamped(w_Max)
 		#print(velocity)
 		move_and_collide(velocity*delta)
 	if (dist_Robot==0):
 		move_and_collide(Vector2.ZERO * delta)
 		
+
+
+func _on_Robot_child_entered_tree(node):
+	pass # Replace with function body.
