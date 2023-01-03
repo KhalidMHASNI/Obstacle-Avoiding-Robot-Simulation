@@ -79,7 +79,7 @@ height = 310.0
 [node name="Sprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 22 )
 animation = "fountain_anim"
-frame = 14
+frame = 11
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

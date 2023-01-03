@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=2]
+[gd_scene load_steps=66 format=2]
 
 [ext_resource path="res://Player/IAAD-Robot-1.png" type="Texture" id=1]
 [ext_resource path="res://World/Bush.tscn" type="PackedScene" id=2]
@@ -12,6 +12,9 @@
 [ext_resource path="res://World/flower.png" type="Texture" id=10]
 [ext_resource path="res://World/Trash.tscn" type="PackedScene" id=11]
 [ext_resource path="res://UI/Score.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Shadows/LargeShadow.png" type="Texture" id=13]
+[ext_resource path="res://chair-removebg-preview.png" type="Texture" id=14]
+[ext_resource path="res://World/Trash1.tscn" type="PackedScene" id=15]
 
 [sub_resource type="ConvexPolygonShape2D" id=3]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -494,11 +497,16 @@ height = 14.0
 [node name="World" type="Node2D"]
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0, 1 )
+position = Vector2( -1, 1 )
 texture = ExtResource( 4 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 0, 0, 640, 368 )
+
+[node name="Chair-removebg-preview" type="Sprite" parent="Sprite"]
+position = Vector2( 483.027, 180.5 )
+scale = Vector2( 0.0725191, 0.065534 )
+texture = ExtResource( 14 )
 
 [node name="TileMap_cliff" type="TileMap" parent="."]
 tile_set = SubResource( 2 )
@@ -550,31 +558,10 @@ margin_bottom = 47.0
 text = "test
 "
 
-[node name="StaticBody2D6" type="StaticBody2D" parent="YSort"]
-
-[node name="StaticBody2D" parent="YSort/StaticBody2D6" instance=ExtResource( 2 )]
-position = Vector2( 89, 57 )
-
-[node name="StaticBody2D2" parent="YSort/StaticBody2D6" instance=ExtResource( 2 )]
-position = Vector2( 156, 71 )
-
-[node name="StaticBody2D3" parent="YSort/StaticBody2D6" instance=ExtResource( 2 )]
-position = Vector2( 211, 87 )
-
-[node name="StaticBody2D4" parent="YSort/StaticBody2D6" instance=ExtResource( 2 )]
-position = Vector2( 70, 78 )
-
-[node name="Tree" parent="YSort/StaticBody2D6" instance=ExtResource( 5 )]
-position = Vector2( 121, 58 )
-
-[node name="StaticBody2D5" parent="YSort/StaticBody2D6" instance=ExtResource( 7 )]
-position = Vector2( 313, 159 )
-scale = Vector2( 0.161865, 0.153512 )
-
 [node name="Flowers_Grass" type="StaticBody2D" parent="YSort"]
 
 [node name="Flower" type="Sprite" parent="YSort/Flowers_Grass"]
-position = Vector2( 155, 90 )
+position = Vector2( 264, 152 )
 scale = Vector2( 0.8125, 0.8125 )
 texture = ExtResource( 10 )
 hframes = 9
@@ -588,7 +575,7 @@ hframes = 9
 frame = 5
 
 [node name="Flower5" type="Sprite" parent="YSort/Flowers_Grass"]
-position = Vector2( 352, 202 )
+position = Vector2( 359, 207 )
 scale = Vector2( 0.8125, 0.8125 )
 texture = ExtResource( 10 )
 hframes = 9
@@ -602,35 +589,35 @@ hframes = 9
 frame = 5
 
 [node name="Flower3" type="Sprite" parent="YSort/Flowers_Grass"]
-position = Vector2( 334, 206 )
+position = Vector2( 304, 216 )
 scale = Vector2( 0.8125, 0.8125 )
 texture = ExtResource( 10 )
 hframes = 9
 frame = 5
 
 [node name="Flower4" type="Sprite" parent="YSort/Flowers_Grass"]
-position = Vector2( 298, 209 )
+position = Vector2( 280, 216 )
 scale = Vector2( 0.8125, 0.8125 )
 texture = ExtResource( 10 )
 hframes = 9
 frame = 5
 
 [node name="Grass" type="Sprite" parent="YSort/Flowers_Grass"]
-position = Vector2( 129, 105 )
+position = Vector2( 256, 168 )
 texture = ExtResource( 9 )
 
 [node name="Grass2" type="Sprite" parent="YSort/Flowers_Grass"]
-position = Vector2( 362, 211 )
+position = Vector2( 376, 216 )
 scale = Vector2( 1.125, 1 )
 texture = ExtResource( 9 )
 
 [node name="Grass3" type="Sprite" parent="YSort/Flowers_Grass"]
-position = Vector2( 299, 220 )
+position = Vector2( 336, 216 )
 scale = Vector2( 1.125, 1 )
 texture = ExtResource( 9 )
 
 [node name="Grass8" type="Sprite" parent="YSort/Flowers_Grass"]
-position = Vector2( 299, 220 )
+position = Vector2( 232, 264 )
 scale = Vector2( 1.125, 1 )
 texture = ExtResource( 9 )
 
@@ -645,7 +632,7 @@ scale = Vector2( 1.125, 1 )
 texture = ExtResource( 9 )
 
 [node name="Grass9" type="Sprite" parent="YSort/Flowers_Grass"]
-position = Vector2( 266, 200 )
+position = Vector2( 264, 208 )
 scale = Vector2( 1.125, 1 )
 texture = ExtResource( 9 )
 
@@ -666,9 +653,38 @@ texture = ExtResource( 10 )
 hframes = 9
 frame = 5
 
+[node name="StaticBody2D6" type="StaticBody2D" parent="YSort"]
+
+[node name="StaticBody2D" parent="YSort/StaticBody2D6" instance=ExtResource( 2 )]
+position = Vector2( 89, 57 )
+
+[node name="StaticBody2D2" parent="YSort/StaticBody2D6" instance=ExtResource( 2 )]
+position = Vector2( 160, 88 )
+
+[node name="StaticBody2D3" parent="YSort/StaticBody2D6" instance=ExtResource( 2 )]
+position = Vector2( 136, 64 )
+
+[node name="StaticBody2D4" parent="YSort/StaticBody2D6" instance=ExtResource( 2 )]
+position = Vector2( 70, 78 )
+
+[node name="Fountain" parent="YSort/StaticBody2D6" instance=ExtResource( 7 )]
+position = Vector2( 312, 160 )
+scale = Vector2( 0.161865, 0.153512 )
+
+[node name="LargeShadow" type="Sprite" parent="YSort/StaticBody2D6"]
+position = Vector2( 112, 88 )
+texture = ExtResource( 13 )
+
+[node name="Tree" parent="YSort/StaticBody2D6" instance=ExtResource( 5 )]
+position = Vector2( 112, 72 )
+
+[node name="Trash1" parent="YSort" instance=ExtResource( 15 )]
+position = Vector2( 520, 264 )
+scale = Vector2( 0.520034, 0.541884 )
+
 [node name="Trash" parent="YSort" instance=ExtResource( 11 )]
 position = Vector2( 166, 143 )
-scale = Vector2( 0.513443, 0.440024 )
+scale = Vector2( 0.520034, 0.541884 )
 
 [node name="Control" parent="YSort" instance=ExtResource( 12 )]
 margin_left = 548.0
@@ -676,4 +692,5 @@ margin_top = 5.0
 margin_right = 688.0
 margin_bottom = 45.0
 
+[connection signal="no_score1" from="YSort/Trash1" to="YSort/Control" method="_on_Trash1_no_score1"]
 [connection signal="no_score" from="YSort/Trash" to="YSort/Control" method="_on_Trash_no_score"]

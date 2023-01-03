@@ -19,8 +19,21 @@ var dist_Gauche = 0
 var dist_Robot = 0
 var rot_Robot = 0
 
+func one_wheel_input():
+	velocity = Vector2()
+	if Input.is_action_just_pressed("ui_right"):
+		w_D +=(delta_w_Max)
+	if Input.is_action_just_pressed("ui_left"):
+		w_D -=(delta_w_Max)
+	if Input.is_action_just_pressed("ui_down"):
+		w_G -=(delta_w_Max)
+	if Input.is_action_just_pressed("ui_up"):
+		w_G +=(delta_w_Max)
+	if Input.is_action_just_pressed("ui_reset"):
+		w_D =0
+		w_G =0
 
-func get_input():
+func two_wheel_input():
 	velocity = Vector2()
 	if Input.is_action_just_pressed("ui_right"):
 		w_G +=(delta_w_Max)
@@ -40,7 +53,7 @@ func get_input():
 		w_G =0
 	
 func _physics_process(delta):
-	get_input()
+	two_wheel_input()
 	w_D = clamp(w_D,-w_Max,w_Max)
 	w_G = clamp(w_G,-w_Max,w_Max)
 	$vitess_ang_G.text = str(w_G)
