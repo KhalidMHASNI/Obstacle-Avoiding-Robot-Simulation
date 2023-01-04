@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 export (float) var rotation_speed = 1
 var velocity = Vector2()
-
+var collider
 #############################################
 var delta_t = 0.1
 var dis_entre_Roue = 5 #cm
@@ -69,15 +69,15 @@ func _physics_process(delta):
 	#print("La vitesse de la roue gauche est : ",w_G)
 	
 	rotation += rot_Robot * rotation_speed * delta_t
-	
 	if (dist_Robot!=0):
 		velocity = (Vector2(dist_Robot,0)).rotated(rotation).clamped(w_Max)
 		#print(velocity)
 		move_and_collide(velocity*delta)
 	if (dist_Robot==0):
 		move_and_collide(Vector2.ZERO * delta)
-		
 
 
-func _on_Robot_child_entered_tree(node):
-	pass # Replace with function body.
+func _on_Area2D_body_entered(body):
+	if (!(body.get_name()=="Trash" or body.get_name()=="Trash1")):
+		w_D = 0
+		w_G = 0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=2]
+[gd_scene load_steps=67 format=2]
 
 [ext_resource path="res://Player/IAAD-Robot-1.png" type="Texture" id=1]
 [ext_resource path="res://World/Bush.tscn" type="PackedScene" id=2]
@@ -13,7 +13,7 @@
 [ext_resource path="res://World/Trash.tscn" type="PackedScene" id=11]
 [ext_resource path="res://UI/Score.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Shadows/LargeShadow.png" type="Texture" id=13]
-[ext_resource path="res://chair-removebg-preview.png" type="Texture" id=14]
+[ext_resource path="res://World/Chair.tscn" type="PackedScene" id=14]
 [ext_resource path="res://World/Trash1.tscn" type="PackedScene" id=15]
 
 [sub_resource type="ConvexPolygonShape2D" id=3]
@@ -494,6 +494,9 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 radius = 7.0
 height = 14.0
 
+[sub_resource type="CapsuleShape2D" id=51]
+radius = 6.0
+
 [node name="World" type="Node2D"]
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -502,11 +505,6 @@ texture = ExtResource( 4 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 0, 0, 640, 368 )
-
-[node name="Chair-removebg-preview" type="Sprite" parent="Sprite"]
-position = Vector2( 483.027, 180.5 )
-scale = Vector2( 0.0725191, 0.065534 )
-texture = ExtResource( 14 )
 
 [node name="TileMap_cliff" type="TileMap" parent="."]
 tile_set = SubResource( 2 )
@@ -557,6 +555,13 @@ margin_right = 38.0
 margin_bottom = 47.0
 text = "test
 "
+
+[node name="Area2D" type="Area2D" parent="YSort/Robot"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Robot/Area2D"]
+modulate = Color( 0.14902, 1, 0, 1 )
+rotation = -1.5708
+shape = SubResource( 51 )
 
 [node name="Flowers_Grass" type="StaticBody2D" parent="YSort"]
 
@@ -692,5 +697,10 @@ margin_top = 5.0
 margin_right = 688.0
 margin_bottom = 45.0
 
+[node name="Chair" parent="." instance=ExtResource( 14 )]
+position = Vector2( 456, 160 )
+scale = Vector2( 0.427466, 0.423077 )
+
+[connection signal="body_entered" from="YSort/Robot/Area2D" to="YSort/Robot" method="_on_Area2D_body_entered"]
 [connection signal="no_score1" from="YSort/Trash1" to="YSort/Control" method="_on_Trash1_no_score1"]
 [connection signal="no_score" from="YSort/Trash" to="YSort/Control" method="_on_Trash_no_score"]
