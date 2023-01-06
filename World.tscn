@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=2]
+[gd_scene load_steps=69 format=2]
 
 [ext_resource path="res://Player/IAAD-Robot-1.png" type="Texture" id=1]
 [ext_resource path="res://World/Bush.tscn" type="PackedScene" id=2]
@@ -15,6 +15,8 @@
 [ext_resource path="res://Shadows/LargeShadow.png" type="Texture" id=13]
 [ext_resource path="res://World/Chair.tscn" type="PackedScene" id=14]
 [ext_resource path="res://World/Trash1.tscn" type="PackedScene" id=15]
+[ext_resource path="res://World/Lamp.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Fonts/Font.tres" type="DynamicFont" id=17]
 
 [sub_resource type="ConvexPolygonShape2D" id=3]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -499,8 +501,7 @@ radius = 6.0
 
 [node name="World" type="Node2D"]
 
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( -1, 1 )
+[node name="Map" type="Sprite" parent="."]
 texture = ExtResource( 4 )
 centered = false
 region_enabled = true
@@ -545,6 +546,7 @@ margin_left = -11.0
 margin_top = -29.0
 margin_right = 37.0
 margin_bottom = 2.0
+custom_fonts/font = ExtResource( 17 )
 text = "test
 "
 
@@ -553,6 +555,7 @@ margin_left = -10.0
 margin_top = 16.0
 margin_right = 38.0
 margin_bottom = 47.0
+custom_fonts/font = ExtResource( 17 )
 text = "test
 "
 
@@ -622,7 +625,7 @@ scale = Vector2( 1.125, 1 )
 texture = ExtResource( 9 )
 
 [node name="Grass8" type="Sprite" parent="YSort/Flowers_Grass"]
-position = Vector2( 232, 264 )
+position = Vector2( 80, 312 )
 scale = Vector2( 1.125, 1 )
 texture = ExtResource( 9 )
 
@@ -658,30 +661,77 @@ texture = ExtResource( 10 )
 hframes = 9
 frame = 5
 
-[node name="StaticBody2D6" type="StaticBody2D" parent="YSort"]
+[node name="Bush_Tree_Chair" type="StaticBody2D" parent="YSort"]
 
-[node name="StaticBody2D" parent="YSort/StaticBody2D6" instance=ExtResource( 2 )]
+[node name="StaticBody2D" parent="YSort/Bush_Tree_Chair" instance=ExtResource( 2 )]
 position = Vector2( 89, 57 )
 
-[node name="StaticBody2D2" parent="YSort/StaticBody2D6" instance=ExtResource( 2 )]
-position = Vector2( 160, 88 )
+[node name="StaticBody2D2" parent="YSort/Bush_Tree_Chair" instance=ExtResource( 2 )]
+position = Vector2( 160, 80 )
 
-[node name="StaticBody2D3" parent="YSort/StaticBody2D6" instance=ExtResource( 2 )]
+[node name="StaticBody2D5" parent="YSort/Bush_Tree_Chair" instance=ExtResource( 2 )]
+position = Vector2( 120, 304 )
+
+[node name="StaticBody2D6" parent="YSort/Bush_Tree_Chair" instance=ExtResource( 2 )]
+position = Vector2( 80, 288 )
+
+[node name="StaticBody2D7" parent="YSort/Bush_Tree_Chair" instance=ExtResource( 2 )]
+position = Vector2( 344, 336 )
+
+[node name="StaticBody2D8" parent="YSort/Bush_Tree_Chair" instance=ExtResource( 2 )]
+position = Vector2( 344, 312 )
+
+[node name="StaticBody2D9" parent="YSort/Bush_Tree_Chair" instance=ExtResource( 2 )]
+position = Vector2( 384, 304 )
+
+[node name="StaticBody2D10" parent="YSort/Bush_Tree_Chair" instance=ExtResource( 2 )]
+position = Vector2( 432, 304 )
+
+[node name="StaticBody2D11" parent="YSort/Bush_Tree_Chair" instance=ExtResource( 2 )]
+position = Vector2( 432, 336 )
+
+[node name="StaticBody2D3" parent="YSort/Bush_Tree_Chair" instance=ExtResource( 2 )]
 position = Vector2( 136, 64 )
 
-[node name="StaticBody2D4" parent="YSort/StaticBody2D6" instance=ExtResource( 2 )]
+[node name="StaticBody2D4" parent="YSort/Bush_Tree_Chair" instance=ExtResource( 2 )]
 position = Vector2( 70, 78 )
 
-[node name="Fountain" parent="YSort/StaticBody2D6" instance=ExtResource( 7 )]
+[node name="Fountain" parent="YSort/Bush_Tree_Chair" instance=ExtResource( 7 )]
 position = Vector2( 312, 160 )
 scale = Vector2( 0.161865, 0.153512 )
 
-[node name="LargeShadow" type="Sprite" parent="YSort/StaticBody2D6"]
+[node name="LargeShadow" type="Sprite" parent="YSort/Bush_Tree_Chair"]
 position = Vector2( 112, 88 )
 texture = ExtResource( 13 )
 
-[node name="Tree" parent="YSort/StaticBody2D6" instance=ExtResource( 5 )]
+[node name="LargeShadow2" type="Sprite" parent="YSort/Bush_Tree_Chair"]
+position = Vector2( 107, 298 )
+texture = ExtResource( 13 )
+
+[node name="LargeShadow3" type="Sprite" parent="YSort/Bush_Tree_Chair"]
+position = Vector2( 384, 336 )
+texture = ExtResource( 13 )
+
+[node name="Tree" parent="YSort/Bush_Tree_Chair" instance=ExtResource( 5 )]
 position = Vector2( 112, 72 )
+
+[node name="Tree3" parent="YSort/Bush_Tree_Chair" instance=ExtResource( 5 )]
+position = Vector2( 384, 320 )
+
+[node name="Tree2" parent="YSort/Bush_Tree_Chair" instance=ExtResource( 5 )]
+position = Vector2( 104, 280 )
+
+[node name="Chair" parent="YSort/Bush_Tree_Chair" instance=ExtResource( 14 )]
+position = Vector2( 472, 184 )
+scale = Vector2( 0.427466, 0.423077 )
+
+[node name="Lamp" parent="YSort/Bush_Tree_Chair/Chair" instance=ExtResource( 16 )]
+position = Vector2( 74.8597, -56.7273 )
+scale = Vector2( 2.33937, 2.36364 )
+
+[node name="Chair2" parent="YSort/Bush_Tree_Chair" instance=ExtResource( 14 )]
+position = Vector2( 240, 296 )
+scale = Vector2( 0.427466, 0.423077 )
 
 [node name="Trash1" parent="YSort" instance=ExtResource( 15 )]
 position = Vector2( 520, 264 )
@@ -692,14 +742,10 @@ position = Vector2( 166, 143 )
 scale = Vector2( 0.520034, 0.541884 )
 
 [node name="Control" parent="YSort" instance=ExtResource( 12 )]
-margin_left = 548.0
-margin_top = 5.0
-margin_right = 688.0
-margin_bottom = 45.0
-
-[node name="Chair" parent="." instance=ExtResource( 14 )]
-position = Vector2( 456, 160 )
-scale = Vector2( 0.427466, 0.423077 )
+margin_left = 552.0
+margin_top = 8.0
+margin_right = 692.0
+margin_bottom = 48.0
 
 [connection signal="body_entered" from="YSort/Robot/Area2D" to="YSort/Robot" method="_on_Area2D_body_entered"]
 [connection signal="no_score1" from="YSort/Trash1" to="YSort/Control" method="_on_Trash1_no_score1"]
