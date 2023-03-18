@@ -66,14 +66,18 @@ func two_wheel_input():
 #           Fonction Générale du Robot
 #################################################################
 func _physics_process(delta):
+	$"../Trash".connect("positionBut",self,"_on_Trash_positionBut")
 	two_wheel_input()
 	w_D = clamp(w_D,-w_Max,w_Max)
 	w_G = clamp(w_G,-w_Max,w_Max)
 	$vitess_ang_G.text = str(w_G)
 	$vitess_ang_D.text = str(w_D)
+	
+	#	Distance parcourus par chaque roue
 	dist_Droite = w_D * delta_t * ray_Roue
 	dist_Gauche = w_G * delta_t * ray_Roue
 	
+	#	Calcul du distance et la rotaion avec chaque roue
 	dist_Robot = (dist_Droite + dist_Gauche)/2
 	rot_Robot = (dist_Gauche - dist_Droite)/(dis_entre_Roue*30) 
 	
@@ -98,3 +102,7 @@ func _on_Area2D_body_entered(body):
 	if (!(body.get_name()=="Trash" or body.get_name()=="Trash1")):
 		w_D = 0
 		w_G = 0
+
+
+func _on_Trash_positionBut(position):
+	print(position)

@@ -750,3 +750,4 @@ margin_bottom = 48.0
 [connection signal="body_entered" from="YSort/Robot/Area2D" to="YSort/Robot" method="_on_Area2D_body_entered"]
 [connection signal="no_score1" from="YSort/Trash1" to="YSort/Control" method="_on_Trash1_no_score1"]
 [connection signal="no_score" from="YSort/Trash" to="YSort/Control" method="_on_Trash_no_score"]
+[connection signal="positionBut" from="YSort/Trash" to="YSort/Robot" method="_on_Trash_positionBut"]
